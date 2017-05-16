@@ -6,8 +6,7 @@
 #include<string.h>
 #include<GL/freeglut.h>
 using namespace std;
-int id[5]={0};
-int fl[5]={0};
+//for orthogonal space
 void init()
 {
         glMatrixMode(GL_PROJECTION);
@@ -15,15 +14,15 @@ void init()
         gluOrtho2D(0,500,0,500);
         glMatrixMode(GL_MODELVIEW);
 }
-
+//plotter is called when user uses cursor presses in  plot graph 
 void plotter(){
         system("./graph");
 }
-
+//plotter is called when user uses cursor presses in about us
 void about(){
         system("./about");
 }
-
+//name function to enter the strings in buttons and the upper panel
 void name()
 {       
         glColor3f(0,0.36,0.85);
@@ -49,7 +48,7 @@ void name()
                 glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,str[i]);
         }
 }
-
+//keys function is to draw keys.
 void keys()
 {
         char str[]="START PLOTTING",s[]="ABOUT US";
@@ -109,6 +108,7 @@ void keys()
                 glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[i]);
         }
 }
+//display function
 void disp(){
         glClearColor(0,0,0,1);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -118,7 +118,7 @@ void disp(){
         glFlush();
 }
 
-
+//mouse function for key press
 void mf1(int b,int s,int x,int y){
         
         if((b==GLUT_LEFT_BUTTON)&&(s==GLUT_DOWN)&&(x>=120&&x<=380)&&(y>=150&&y<=200))
@@ -139,7 +139,7 @@ int main(int argc,char **argv)
         glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
         glutInitWindowSize(500,500);
         glutInitWindowPosition(350,140);
-        id[0]=glutCreateWindow("GRAPH Plotter");
+        glutCreateWindow("GRAPH Plotter");
         init();
         glutDisplayFunc(disp);
         glutMouseFunc(mf1);
