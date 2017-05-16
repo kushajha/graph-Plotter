@@ -6,8 +6,7 @@
 #include<string.h>
 #include<GL/freeglut.h>
 using namespace std;
-int id[5]={0};
-int fl[5]={0};
+//initializing orthogonal space
 void init()
 {
         glMatrixMode(GL_PROJECTION);
@@ -16,14 +15,7 @@ void init()
         glMatrixMode(GL_MODELVIEW);
 }
 
-void plotter(){
-
-}
-
-void about(){
-        system("./about");
-}
-
+//displaying string 
 void name()
 {       
         glColor3f(0,0.36,0.85);
@@ -109,6 +101,7 @@ void keys()
                 glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[i]);
         }
 }
+//display function
 void disp(){
         glClearColor(0.76,0.58,0.62,1);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -118,21 +111,7 @@ void disp(){
         glFlush();
 }
 
-
-void mf1(int b,int s,int x,int y){
-         //error
-        if((b==GLUT_LEFT_BUTTON)&&(s==GLUT_DOWN)&&(x>=49&&x<=387)&&(y>=115&&y<=165))
-        {
-                plotter();
-        }  
-               
-        if((b==GLUT_LEFT_BUTTON)&&(s==GLUT_DOWN)&&((x>=49)&&(x<=220))&&((y>=280)&&(y<=330)))
-        {
-                about();
-                
-                
-        }               
-}
+//main function
 int main(int argc,char **argv)
 {
         glutInit(&argc,argv);
@@ -142,7 +121,6 @@ int main(int argc,char **argv)
         id[0]=glutCreateWindow("GRAPH Plotter");
         init();
         glutDisplayFunc(disp);
-        glutMouseFunc(mf1);
         glutMainLoop();
         
 }
